@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        Username: <input type="text" name="username" id="username">&nbsp;&nbsp;
+        <button id="clickMe" type="button" value="clickme" onclick="getImages(this.form.username.value)">
+        Scrape Account Images</button>
+    </form>
+
+    <div id="scrapedimages"></div>
+
+    <style>
+        form {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+        }
+        #scrapedimages {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #scrapedimages img {
+            max-width: 200px;
+        }
+    </style>    
+    <script>
+        let imgArray
+
+        const getImages = (username) => {
+            document.querySelector('#scrapedimages').innerHTML = 'Loading...'
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.querySelector('#scrapedimages').innerHTML = ''
+                    imgArray = JSON.parse(this.responseText)
+                    if ( imgArray.images.length > 0 ) {
+                        imgArray.images.split(',').forEach((source) => {
+                            var image = document.createElement('img')
+                            image.src = source
+                            document.querySelector('#scrapedimages').appendChild(image)
+                        })
+                    }
+                }
+            };
+            xhttp.open('GET', 'http://127.0.0.1:8888/instascraper/user/' + username, true);
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>

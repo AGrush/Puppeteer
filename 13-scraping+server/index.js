@@ -5,7 +5,7 @@ const app = express()
 const port = 8888
 
 const username = 'grushevskiy@gmail.com';
-const password = 'Intercom111.';
+const password = 'xxx';
 
 (async () => {
 

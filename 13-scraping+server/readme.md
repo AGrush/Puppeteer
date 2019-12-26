@@ -6,5 +6,5 @@ To start:
   - Navigate to directory in console
   - Run index.html with VSC liveserver
   - Replace username&pass in index.js with your instagram username & pass.
-  - Run index.js with ```$ node index.js ```
+  - Run index.js with node ```$ node index.js ```
   - Type instagram username and click scrape!

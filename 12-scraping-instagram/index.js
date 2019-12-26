@@ -12,7 +12,7 @@ async function scrapeImages (username) {
 
     //.type method selects an element on the dom and simulates typing into that form
     await page.type('[name=username]','grushevskiy@gmail.com')
-    await page.type('[name=password]','Intercom111.')
+    await page.type('[name=password]','xxx')
 
     await page.screenshot({path: '2.png'})
     await page.click('[type=submit]')
